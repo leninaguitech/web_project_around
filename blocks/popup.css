@@ -15,10 +15,6 @@
   display: flex;
 }
 
-.popup_opened {
-  display: flex;
-}
-
 .popup__container {
   position: relative;
   max-width: 430px;
