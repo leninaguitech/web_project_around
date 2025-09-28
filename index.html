@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Around USA of North - America" />
+    <meta name="author" content="Juan Pablo" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, Javascript, web development, frontend, coding, SEO, USA"
+    />
+    <link rel="stylesheet" href="vendor/fonts.css" />
+    <link rel="shortcut icon" href="images/usa.png" type="image/x-icon" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Around USA</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img src="./images/logo.png" alt="logo" class="header__logo" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            src="./images/image.jpg"
+            alt="profile picture of user"
+            class="profile__avatar"
+          />
+          <div class="profile__container">
+            <h2 class="profile__name">Jacques Cousteau</h2>
+            <h3 class="profile__profession">Explorer</h3>
+          </div>
+          <button type="button" class="profile__edit-button">
+            <img
+              src="./images/edit.png"
+              alt="Pen to edit the profile"
+              class="profile__edit-image"
+            />
+          </button>
+          <button type="button" class="profile__add-button">
+            <img
+              src="./images/add.png"
+              alt="box to add more"
+              class="profile__add-image"
+            />
+          </button>
+        </section>
+        <section class="form">
+          <div class="form__overlay"></div>
+          <div class="form__container">
+            <button type="button" class="form__close">
+              <img src="./images/close.png" alt="close icon" />
+            </button>
+            <form class="form__group">
+              <h2 class="form__title">Edit profile</h2>
+              <input
+                type="text"
+                id="name"
+                placeholder="Nombre"
+                class="form__placeholder"
+              />
+              <input
+                type="text"
+                id="profession"
+                placeholder="Acerca de mi"
+                class="form__placeholder"
+              />
+              <button type="submit" class="form__submit">Guardar</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="formadd">
+          <div class="formadd__overlay"></div>
+          <div class="formadd__container">
+            <div class="formadd__close"></div>
+          </div>
+        </section>
+        <section class="cards">
+          <div class="cards__list"></div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p>© 2024 Around The U.S.</p>
+      </footer>
+    </div>
+    <template class="template-card">
+      <div class="cards__content">
+        <img
+          src="./images/jairo.jpg"
+          alt="View with the sunset from afar and nature"
+          class="cards__content-image"
+        />
+
+        <div class="cards__content-block">
+          <h2 class="cards__content-description">Point Reyes</h2>
+          <button
+            aria-label="Like-button"
+            type="button"
+            class="cards__content-like"
+          ></button>
+        </div>
+      </div>
+    </template>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

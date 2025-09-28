@@ -13,4 +13,4 @@ The website was created using the following HTML, CSS, Javascript, GIT/GITHUB to
 - Arrays and Loops
 - Declaring and Calling Functions
 
-You can access it here:
+You can access it here: https://leninaguitech.github.io/web_project_around
