@@ -45,27 +45,29 @@
             />
           </button>
         </section>
-        <section class="form">
-          <div class="form__overlay"></div>
-          <div class="form__container">
-            <button type="button" class="form__close">
-              <img src="./images/close.png" alt="close icon" />
+
+        <section class="popup">
+          <div class="popup__container">
+            <button type="button" class="popup__close">
+              <img src="./images/close.png" alt="cerrar" />
             </button>
-            <form class="form__group">
-              <h2 class="form__title">Edit profile</h2>
+            <form class="popup__form">
+              <h2 class="popup__title">Editar perfil</h2>
               <input
                 type="text"
-                id="name"
+                name="name"
                 placeholder="Nombre"
-                class="form__placeholder"
+                class="popup__input"
+                id="popup-name"
               />
               <input
                 type="text"
-                id="profession"
-                placeholder="Acerca de mi"
-                class="form__placeholder"
+                name="about"
+                placeholder="Acerca de mí"
+                class="popup__input"
+                id="popup-about"
               />
-              <button type="submit" class="form__submit">Guardar</button>
+              <button type="submit" class="popup__submit">Guardar</button>
             </form>
           </div>
         </section>

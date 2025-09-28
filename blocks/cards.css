@@ -52,3 +52,7 @@
   background-size: 21px 18px;
   border: none;
 }
+
+.cards__content-like_active {
+  background-image: url(../images/Vector_active.svg);
+}
