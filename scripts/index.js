@@ -1,21 +1,13 @@
-let editButton = document.querySelector(".profile__edit-button");
-let closeButton = document.querySelector(".form__close");
-let formContainer = document.querySelector(".form__container");
-let formEditName = document.querySelector(".form");
-let profileName = document.querySelector(".profile__name");
-let profileProfession = document.querySelector(".profile__profession");
-let inputName = document.querySelector("#name");
-let inputProfession = document.querySelector("#profession");
-
+const editButton = document.querySelector(".profile__edit-button");
+const closeButton = document.querySelector(".form__close");
+const formContainer = document.querySelector(".form__group");
+const formEditName = document.querySelector(".form");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__profession");
+const inputName = document.querySelector("#name");
+const inputProfession = document.querySelector("#profession");
 const templateCard = document.querySelector(".template-card");
 const cardsList = document.querySelector(".cards__list");
-
-const addMenu = document.querySelector(".profile__add-button");
-const formAddPlace = document.querySelector(".formadd");
-const formAddClose = document.querySelector(".formadd__close");
-const formAddContainer = document.querySelector(".formadd__container");
-const inputTitle = document.querySelector("#inputTitle");
-const inputImage = document.querySelector("#inputUrl");
 
 const initialCards = [
   {
@@ -55,8 +47,11 @@ function createCard(name, link) {
   const cardTitle = cloneCard.querySelector(".cards__content-description");
   const cardImage = cloneCard.querySelector(".cards__content-image");
   const cardLikeButton = cloneCard.querySelector(".cards__content-like");
+
   cardTitle.textContent = name;
   cardImage.src = link;
+  cardImage.alt = name;
+
   cardLikeButton.addEventListener("click", function () {
     cardLikeButton.classList.toggle("cards__content-like_active");
   });
@@ -64,28 +59,32 @@ function createCard(name, link) {
   cardsList.prepend(cloneCard);
 }
 
-function openAdd() {
-  formAddPlace.classList.add("formadd-active");
-}
-
-function closeAdd() {
-  formAddPlace.classList.remove("formadd-active");
-}
-
-addMenu.addEventListener("click", openAdd);
-formAddClose.addEventListener("click", closeAdd);
-
 function openMenu() {
   formEditName.classList.add("form-active");
+  // Cargar valores actuales en los inputs
+  inputName.value = profileName.textContent;
+  inputProfession.value = profileProfession.textContent;
 }
 
 function closeMenu() {
   formEditName.classList.remove("form-active");
 }
 
+// Event listeners
 editButton.addEventListener("click", openMenu);
 closeButton.addEventListener("click", closeMenu);
 
-inputImage.addEventListener("click", function () {});
+// Cerrar formulario al hacer clic en el overlay
+formEditName.addEventListener("click", function (evt) {
+  if (evt.target === formEditName) {
+    closeMenu();
+  }
+});
 
-popupClose.addEventListener("click", closeImage);
+// Manejar submit del formulario
+formContainer.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileProfession.textContent = inputProfession.value;
+  closeMenu();
+});
