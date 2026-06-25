@@ -1,16 +1,30 @@
-# Tripleten web_project_around
+# Around The U.S.
 
-Seventh Project of TripleTen University
+## Proyecto 8 — TripleTen University
 
-The website was created using the following HTML, CSS, Javascript, GIT/GITHUB topics:
+Aplicación web interactiva para explorar lugares fotográficos de EE. UU.
+El usuario puede editar su perfil, agregar tarjetas con título e imagen,
+dar "me gusta", eliminar tarjetas y ver imágenes ampliadas en un popup.
 
-- Javascript and DOM
-- Connecting JS to your page and displaying alerts and information in the console
-- Numbers and Mathematical Operations
-- Strings, Concatenation, and Converting Numbers to Strings
-- Variable Types
-- Comparisons, Statements, and Logical Operations
-- Arrays and Loops
-- Declaring and Calling Functions
+## Tecnologías utilizadas
 
-You can access it here: https://leninaguitech.github.io/web_project_around
+- HTML5 semántico con metodología BEM
+- CSS3: Flexbox, media queries, hover states
+- JavaScript: manipulación del DOM, eventos, templates HTML
+- Validación de formularios con la API nativa de Constraint Validation
+- Estructura modular de archivos por bloques BEM
+- Git y GitHub para control de versiones
+
+## Funcionalidades
+
+- Editar nombre y profesión del perfil
+- Agregar nuevas tarjetas con título y URL de imagen
+- Eliminar tarjetas (botón papelera aparece al hover)
+- Dar "me gusta" a tarjetas (toggle de corazón)
+- Ver imagen ampliada al hacer clic en la foto
+- Cerrar popups con X, clic en fondo oscuro o tecla Escape
+- Validación en tiempo real con mensajes de error por campo
+
+## Enlace a GitHub Pages
+
+[https://leninaguitech.github.io/web_project_around](https://leninaguitech.github.io/web_project_around)

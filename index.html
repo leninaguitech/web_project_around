@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Around USA of North - America" />
+    <meta
+      name="description"
+      content="Around USA - Explora lugares fotográficos de EE. UU."
+    />
     <meta name="author" content="Juan Pablo" />
     <meta
       name="keywords"
-      content="HTML, CSS, Javascript, web development, frontend, coding, SEO, USA"
+      content="HTML, CSS, Javascript, desarrollo web, frontend, fotografía, USA"
     />
     <link rel="stylesheet" href="vendor/fonts.css" />
     <link rel="shortcut icon" href="images/usa.png" type="image/x-icon" />
@@ -16,14 +19,22 @@
   </head>
   <body>
     <div class="page">
+      <!-- ENCABEZADO -->
       <header class="header">
-        <img src="./images/logo.png" alt="logo" class="header__logo" />
+        <img
+          src="./images/logo.png"
+          alt="Logo Around The U.S."
+          class="header__logo"
+        />
       </header>
+
+      <!-- CONTENIDO PRINCIPAL -->
       <main class="content">
+        <!-- Sección perfil -->
         <section class="profile">
           <img
             src="./images/image.jpg"
-            alt="profile picture of user"
+            alt="Foto de perfil del usuario"
             class="profile__avatar"
           />
           <div class="profile__container">
@@ -33,65 +44,129 @@
           <button type="button" class="profile__edit-button">
             <img
               src="./images/edit.png"
-              alt="Pen to edit the profile"
+              alt="Botón para editar el perfil"
               class="profile__edit-image"
             />
           </button>
           <button type="button" class="profile__add-button">
             <img
               src="./images/add.png"
-              alt="box to add more"
+              alt="Botón para agregar tarjeta"
               class="profile__add-image"
             />
           </button>
         </section>
 
-        <section class="popup">
-          <div class="popup__container">
-            <button type="button" class="popup__close">
-              <img src="./images/close.png" alt="cerrar" />
-            </button>
-            <form class="popup__form">
-              <h2 class="popup__title">Editar perfil</h2>
-              <input
-                type="text"
-                name="name"
-                placeholder="Nombre"
-                class="popup__input"
-                id="popup-name"
-              />
-              <input
-                type="text"
-                name="about"
-                placeholder="Acerca de mí"
-                class="popup__input"
-                id="popup-about"
-              />
-              <button type="submit" class="popup__submit">Guardar</button>
-            </form>
-          </div>
-        </section>
-
+        <!-- Sección tarjetas -->
         <section class="cards">
           <div class="cards__list"></div>
         </section>
       </main>
+
+      <!-- POPUP: Editar perfil -->
+      <section class="popup">
+        <div class="popup__container">
+          <button type="button" class="popup__close">
+            <img src="./images/close.png" alt="Cerrar ventana" />
+          </button>
+          <form class="popup__form" novalidate>
+            <h2 class="popup__title">Editar perfil</h2>
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              class="popup__input"
+              id="popup-name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="popup-name-error popup__error"></span>
+            <input
+              type="text"
+              name="about"
+              placeholder="Acerca de mí"
+              class="popup__input"
+              id="popup-about"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="popup-about-error popup__error"></span>
+            <button type="submit" class="popup__submit">Guardar</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- POPUP: Agregar nueva tarjeta -->
+      <section class="popup popup-add">
+        <div class="popup__container">
+          <button type="button" class="popup__close popup__close--add">
+            <img src="./images/close.png" alt="Cerrar ventana" />
+          </button>
+          <form class="popup__form popup__form_add" novalidate>
+            <h2 class="popup__title">Nueva Ubicación</h2>
+            <input
+              type="text"
+              id="title-input"
+              name="title"
+              placeholder="Título"
+              class="popup__input"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="title-input-error popup__error"></span>
+            <input
+              type="url"
+              id="url-input"
+              name="url"
+              placeholder="Link de imagen"
+              class="popup__input"
+              required
+            />
+            <span class="url-input-error popup__error"></span>
+            <button type="submit" class="popup__submit">Crear</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- POPUP: Ver imagen ampliada -->
+      <section class="popup popup-image">
+        <div class="popup__container popup__container--image">
+          <button type="button" class="popup__close popup__close--image">
+            <img src="./images/close.png" alt="Cerrar ventana" />
+          </button>
+          <img class="popup__zoom-image" src=" " alt="" />
+          <p class="popup__zoom-caption"></p>
+        </div>
+      </section>
+
+      <!-- PIE DE PÁGINA -->
       <footer class="footer">
-        <p>© 2024 Around The U.S.</p>
+        <p>© 2026 Around The U.S.</p>
       </footer>
     </div>
+
+    <!-- TEMPLATE tarjeta -->
     <template class="template-card">
       <div class="cards__content">
+        <button type="button" class="cards__trash-button">
+          <img
+            src="./images/trash.png"
+            alt="Eliminar tarjeta"
+            class="cards__trash-image"
+          />
+        </button>
         <img
           src="./images/jairo.jpg"
-          alt="View with the sunset from afar and nature"
+          alt="Imagen de la tarjeta"
           class="cards__content-image"
         />
-
         <div class="cards__content-block">
           <h2 class="cards__content-description">Point Reyes</h2>
           <button
-            aria-label="Like-button"
+            aria-label="Botón de me gusta"
             type="button"
             class="cards__content-like"
           ></button>
@@ -100,5 +175,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
