@@ -1,26 +1,42 @@
+// ── Configuración de la validación ─────────────────────────────────────────
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
 // ── Mostrar / ocultar error de un input ────────────────────────────────────
 
-function showInputError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_type_error");
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__error_visible");
+  errorElement.classList.add(config.errorClass);
 }
 
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("popup__input_type_error");
-  errorElement.classList.remove("popup__error_visible");
+  inputElement.classList.remove(config.inputErrorClass);
+  errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 }
 
 // ── Verificar validez de un input ──────────────────────────────────────────
 
-function checkInputValidity(formElement, inputElement) {
+function checkInputValidity(formElement, inputElement, config) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      config,
+    );
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 }
 
@@ -34,28 +50,30 @@ function hasInvalidInput(inputList) {
 
 // ── Habilitar / deshabilitar botón submit ──────────────────────────────────
 
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit_disabled");
+    buttonElement.disabled = true;
+    buttonElement.classList.add(config.inactiveButtonClass);
   } else {
-    buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("popup__submit_disabled");
+    buttonElement.disabled = false;
+    buttonElement.classList.remove(config.inactiveButtonClass);
   }
 }
 
 // ── Agregar listeners a cada input de un formulario ────────────────────────
 
-function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  const buttonElement = formElement.querySelector(".popup__submit");
+function setEventListeners(formElement, config) {
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector),
+  );
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach(function (inputElement) {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, config);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 
@@ -64,19 +82,34 @@ function setEventListeners(formElement) {
     if (hasInvalidInput(inputList)) {
       evt.preventDefault();
       inputList.forEach(function (inputElement) {
-        checkInputValidity(formElement, inputElement);
+        checkInputValidity(formElement, inputElement, config);
       });
     }
   });
 }
 
+// ── Restablecer validación (usada al abrir un popup) ───────────────────────
+
+function resetValidation(formElement, config) {
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector),
+  );
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+
+  inputList.forEach(function (inputElement) {
+    hideInputError(formElement, inputElement, config);
+  });
+
+  toggleButtonState(inputList, buttonElement, config);
+}
+
 // ── Activar validación en todos los formularios ────────────────────────────
 
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll(".popup__form"));
+function enableValidation(config) {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach(function (formElement) {
-    setEventListeners(formElement);
+    setEventListeners(formElement, config);
   });
 }
 
-enableValidation();
+enableValidation(validationConfig);

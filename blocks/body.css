@@ -1,3 +1,23 @@
 body {
   background-color: #000000;
 }
+
+/* ── Reseteo de márgenes de encabezados y listas ────────────────────────────
+   (Antes vivía incorrectamente dentro de vendor/normalize.css; se movió aquí
+   para no modificar el archivo de la librería de terceros.) */
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}

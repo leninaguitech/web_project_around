@@ -15,14 +15,14 @@ const inputProfession = document.querySelector("#popup-about");
 // Popup AGREGAR TARJETA
 const addButton = document.querySelector(".profile__add-button");
 const popupAdd = document.querySelector(".popup-add");
-const closeAddButton = document.querySelector(".popup__close--add");
+const closeAddButton = document.querySelector(".popup__close_add");
 const formAdd = document.querySelector(".popup__form_add");
 const inputTitle = document.querySelector("#title-input");
 const inputUrl = document.querySelector("#url-input");
 
 // Popup IMAGEN AMPLIADA
 const popupImage = document.querySelector(".popup-image");
-const closeImgButton = document.querySelector(".popup__close--image");
+const closeImgButton = document.querySelector(".popup__close_image");
 const zoomImage = document.querySelector(".popup__zoom-image");
 const zoomCaption = document.querySelector(".popup__zoom-caption");
 
@@ -61,21 +61,22 @@ const initialCards = [
 
 // ── Funciones de popup ──────────────────────────────────────────────────────
 
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) closePopup(openedPopup);
+  }
+}
+
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEscape);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEscape);
 }
-
-// Cerrar con Escape
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    const opened = document.querySelector(".popup_opened");
-    if (opened) closePopup(opened);
-  }
-});
 
 // Cerrar al hacer clic en el overlay (fondo oscuro)
 [popup, popupAdd, popupImage].forEach(function (p) {
@@ -89,6 +90,7 @@ document.addEventListener("keydown", function (evt) {
 editButton.addEventListener("click", function () {
   inputName.value = profileName.textContent;
   inputProfession.value = profileProfession.textContent;
+  resetValidation(formElement, validationConfig);
   openPopup(popup);
 });
 
@@ -107,6 +109,7 @@ formElement.addEventListener("submit", function (evt) {
 
 addButton.addEventListener("click", function () {
   formAdd.reset();
+  resetValidation(formAdd, validationConfig);
   openPopup(popupAdd);
 });
 

@@ -1,6 +1,6 @@
 # Around The U.S.
 
-## Proyecto 8 — TripleTen University
+## Proyecto 9 — TripleTen University
 
 Aplicación web interactiva para explorar lugares fotográficos de EE. UU.
 El usuario puede editar su perfil, agregar tarjetas con título e imagen,

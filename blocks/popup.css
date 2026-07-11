@@ -136,7 +136,7 @@
 }
 
 /* ── Popup imagen ampliada ──────────────────────────────────── */
-.popup__container--image {
+.popup__container_image {
   background: transparent;
   box-shadow: none;
   max-width: 75vw;
